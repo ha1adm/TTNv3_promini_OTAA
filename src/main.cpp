@@ -14,7 +14,7 @@
 #define DEBUGPRINTLNARG(x,y)
 #endif
 
-#define ONE_WIRE_BUS 3
+#define ONE_WIRE_BUS 7
 OneWire oneWire(ONE_WIRE_BUS);
 DS18B20 sensor(&oneWire);
 SPIFlash flash(8 , 0xEF40); 
@@ -232,7 +232,6 @@ void setup() {
     DEBUGPRINTLN(F("Starting"));
     sensor.begin();
     // Check FLASH
-    Serial.println(F("Starting"));
     DEBUGPRINT(F("Start flash...")); 
     if (flash.initialize())
       DEBUGPRINTLN(F("Init Flash OK!"));
