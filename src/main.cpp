@@ -271,6 +271,7 @@ void do_send(osjob_t* j){
         //LMIC_setTxData2(1, mydata, sizeof(mydata)-1, 0);
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1, payload, sizeof(payload), 0);
+        transmitting = true;
     }
     // Next TX is scheduled after TX_COMPLETE event.
 }
@@ -316,7 +317,8 @@ void setup() {
         #endif
     #endif
     LMIC.rxDelay = 5;
-
+    // Continue only if the Bbattery is over a safe limit
+    check_battery(BATT_LVL_MIN);
     // Start job (sending automatically starts OTAA too)
     do_send(&sendjob);
 }
