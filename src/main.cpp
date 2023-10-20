@@ -113,6 +113,7 @@ void check_battery(int16_t batt_minimum) {
         resetLMICDuty(8);
         Serial.flush(); // give the serial print chance to complete   
     }
+    DEBUGPRINTLN(F("Battery Level ok"));
 
 }
 
@@ -287,7 +288,7 @@ void setup() {
     else
       DEBUGPRINTLN(F("Init Flash FAIL!"));
     DEBUGPRINT(F("DeviceID: "));
-    DEBUGPRINTLNARG(flash.readDeviceId(), HEX);
+    printFlashUID();
 
     // Get Board Temperature
     #ifdef DEBUG 
@@ -342,3 +343,4 @@ void loop() {
 
 }
 }
+
