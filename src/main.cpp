@@ -38,6 +38,7 @@ void do_sendmac(osjob_t* j) {
     byte mydata[1];
     LMIC_setTxData2(0, mydata, sizeof(mydata), 0);
     DEBUGPRINTLN(F("Packet queued (MAC command)"));
+    transmitting = true;
   }
   // Next TX is scheduled after TX_COMPLETE event.
 }
